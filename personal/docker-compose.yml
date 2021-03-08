@@ -1,0 +1,35 @@
+version: "3.9"
+
+services:
+
+  Blog:
+    image: "ghost"
+    container_name: "Blog"
+    restart: "always"
+    ports: 
+      - "2368"
+    environment: 
+      url: "https://url.local"
+    volumes:
+      - "/opt/ghost:/var/lib/ghost/content"
+
+  Portainer:
+    image: "portainer/portainer"
+    ports:
+      - 8000:8000
+      - 9000:9000
+    volumes:
+      - "/opt/portainer:/data"
+
+  Db:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+
+  Adminer:
+    image: adminer
+    restart: always
+    ports:
+      - 8080:8080
