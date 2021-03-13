@@ -10,8 +10,8 @@ services:
       - "2368"
     environment: 
       url: "https://url.local"
-    volumes:
-      - "/opt/ghost:/var/lib/ghost/content"
+#    volumes:
+#      - "/opt/ghost:/var/lib/ghost/content"
 
   Portainer:
     image: "portainer/portainer"
